@@ -1,9 +1,9 @@
 <template>
     <div>
-        <img alt="Vue logo" src="../assets/logo.png">
-        <h1>Number: {{$store.getters.number}}</h1>
-        <button @click="add">Add</button>
-        <button @click="remove">Remove</button>
+      <img alt="Vue logo" src="../assets/logo.png">
+      <h1>Number: {{$store.getters.number}}</h1>
+      <button @click="add">Add</button>
+      <button @click="remove">Remove</button>
     </div>
 </template>
 

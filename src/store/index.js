@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import employees from './employees'
 
 Vue.use(Vuex)
 
@@ -17,5 +18,8 @@ export const store = new Vuex.Store({
   },
   getters: {
     number: state => state.number
+  },
+  modules: {
+    employees
   }
 })
