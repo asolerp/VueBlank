@@ -5,7 +5,9 @@
       <router-link class="nav_link" to="/about">About</router-link>
       <router-link class="nav_link" to="/view">View Data</router-link>
     </nav>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view :key="$route.fullPath"></router-view>
+    </keep-alive>
   </div>
 </template>
 

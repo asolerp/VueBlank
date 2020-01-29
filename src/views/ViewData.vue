@@ -1,17 +1,17 @@
 <template>
-    <div>
-        <FetchData :url="'http://dummy.restapiexample.com/api/v1/employees'">
-        <template v-slot="{data, loading}">
-          <div v-if="loading">
-            <p>Cargando datos..</p>
-          </div>
-          <div v-else>
-            <h2>Result: {{ data.length }} users</h2>
-            <p v-for="user in data" :key="user.id">{{ user.employee_name }}</p>
-          </div>
-        </template>
-        </FetchData>
-    </div>
+  <div>
+    <FetchData :url="'http://dummy.restapiexample.com/api/v1/employees'">
+    <template slot="loading">
+        <p>Cargando datos..</p>
+    </template>
+    <template slot-scope="props">
+      <div v-if="props.data">
+        <h2>Result: {{ props.data.length }} users</h2>
+        <p v-for="user in props.data" :key="user.id">{{ user.employee_name }}</p>
+      </div>
+    </template>
+    </FetchData>
+  </div>
 </template>
 
 <script>
@@ -21,11 +21,6 @@ export default {
   name: 'ViewData',
   components: {
     FetchData
-  },
-  methods: {
-    storeEmployees (employees) {
-      this.$store.dispatch('setEmployees', employees.data)
-    }
   }
 }
 </script>
