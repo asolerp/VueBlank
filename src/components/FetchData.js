@@ -1,4 +1,3 @@
-
 export default {
   name: 'FetchData',
   props: {
@@ -9,24 +8,30 @@ export default {
   },
   data: () => ({
     data: null,
-    loaded: false
+    loaded: false,
+    error: null
   }),
-  async created () {
-    try {
-      const { data } = await this.axios.get(this.url)
-      this.data = data.data
+  mounted () {
+    this.fethData()
+  },
+  methods: {
+    async fethData () {
       this.loaded = true
-    } catch (err) {
-      console.error(err)
-      this.error = err
+      try {
+        const { data } = await this.axios.get(this.url)
+        this.data = data.data
+      } catch (err) {
+        console.error(err)
+        this.error = err
+      }
+      this.loaded = false
     }
   },
   render () {
-    const slot = this.$scopedSlots.default({
-      loading: !this.loaded,
-      data: this.data
+    return this.$scopedSlots.default({
+      data: this.data,
+      loaded: this.loaded,
+      error: this.error
     })
-
-    return Array.isArray(slot) ? slot[0] : slot
   }
 }

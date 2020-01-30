@@ -3,11 +3,11 @@
     <nav>
       <router-link class="nav_link" to="/">Home</router-link>
       <router-link class="nav_link" to="/about">About</router-link>
-      <router-link class="nav_link" to="/view">View Data</router-link>
+      <router-link class="nav_link" to="/employees">Employees</router-link>
     </nav>
-    <keep-alive>
-      <router-view :key="$route.fullPath"></router-view>
-    </keep-alive>
+  <keep-alive>
+    <router-view :key="$route.fullPath"></router-view>
+  </keep-alive>
   </div>
 </template>
 
@@ -27,6 +27,8 @@ export default {
   margin-top: 60px;
 }
 .nav_link {
-  margin-right: 10px
+  text-decoration: none;
+  color: black;
+  margin-right: 10px;
 }
 </style>
