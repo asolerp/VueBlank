@@ -1,10 +1,3 @@
-<template>
-  <div>
-    <slot name="loading" v-if="loaded"/>
-    <slot :data="data"/>
-  </div>
-</template>
-<script>
 export default {
   name: 'FetchData',
   props: {
@@ -18,7 +11,7 @@ export default {
     loaded: false,
     error: null
   }),
-  async mounted () {
+  mounted () {
     this.fethData()
   },
   methods: {
@@ -33,6 +26,12 @@ export default {
       }
       this.loaded = false
     }
+  },
+  render () {
+    return this.$scopedSlots.default({
+      data: this.data,
+      loaded: this.loaded,
+      error: this.error
+    })
   }
 }
-</script>
